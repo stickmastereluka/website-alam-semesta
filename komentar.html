@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Komentar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .comments-section {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .comment, .reply {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        .reply {
+            margin-left: 20px;
+            border-left: 2px solid #007bff;
+            padding-left: 10px;
+        }
+        .comment-input, .reply-input {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .comment-input input, .reply-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .comment-input button, .reply-input button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        nav {
+            text-align: center;
+            margin: 1rem 0;
+        }
+        nav a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: #121214;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="penjelasan alam semesta.html">Penjelasan alam semesta terbentuk</a>
+        <a href="fakta unik tentang alam semesta.html">Fakta unik tentang alam semesta</a>
+        <a href="komentar.html">komentar</a>
+    </nav>
+    <div class="comments-section">
+        <h2>Komentar</h2>
+        <div id="comments-container">
+            <!-- Komentar akan ditampilkan di sini -->
+        </div>
+        <div class="comment-input">
+            <input type="text" id="username" placeholder="Nama Anda" />
+            <input type="text" id="comment-text" placeholder="Tambahkan komentar..." />
+            <button id="add-comment-btn">Kirim</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Ambil elemen
+        const commentsContainer = document.getElementById('comments-container');
+        const commentInput = document.getElementById('comment-input');
+        const addCommentBtn = document.getElementById('add-comment-btn');
+
+        // Tambahkan event listener untuk tombol "Kirim"
+        addCommentBtn.addEventListener('click', () => {
+            const commentText = commentInput.value.trim();
+
+            if (commentText) {
+                // Buat elemen komentar baru
+                const commentDiv = document.createElement('div');
+                commentDiv.classList.add('comment');
+                commentDiv.innerHTML = `
+                    <div class="user">Pengguna Anonim</div>
+                    <div class="text">${commentText}</div>
+                `;
+
+                // Tambahkan komentar ke container
+                commentsContainer.appendChild(commentDiv);
+
+                // Kosongkan input
+                commentInput.value = '';
+            } else {
+                alert('Komentar tidak boleh kosong!');
+            }
+        });
+    </script>
+</body>
+</html>
